@@ -1,0 +1,246 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <link rel='stylesheet' href='css/styles.css'>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel='icon' type='image/png' href='images/icon.ico'>
+    <title>
+        Алгоритм Краскала
+    </title>
+    <style>
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 1px rgba(75, 75, 75, 0.514);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgb(18, 107, 100);
+            border-radius: 4px;
+        }
+
+        /* Handle on hover */
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(18, 107, 100, 0.747);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class='nav-wrapper'>
+            <ul class='nav-list'>
+                <li class="nav-list-item">
+                    <a href="index.html">
+                        <i class="material-icons">
+                            home
+                        </i>
+                        <span>Главная</span>
+                    </a>
+                </li>
+                <li class='nav-list-item'>
+                    <a href='study.html'>
+                        <i class="material-icons">
+                            school
+                        </i>
+                        <span>
+                            Обучение
+                        </span>
+                    </a>
+                </li>
+                <li class='nav-list-item'>
+                    <a href='practice.html'>
+                        <i class="material-icons">
+                            create
+                        </i>
+                        <span>
+                            Практика
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <section class="wrapper">
+            <div class="left">
+                <div class='task'>
+                    <h3 class="task-title">Задание</h3>
+                    <div class='task-table-wrapper'>
+                        <table class='task-table'>
+                            <tr>
+                                <th>
+                                    Ребро
+                                </th>
+                                <th>
+                                    AE
+                                </th>
+                                <th>
+                                    CD
+                                </th>
+                                <th>
+                                    AB
+                                </th>
+                                <th>
+                                    BE
+                                </th>
+                                <th>
+                                    BC
+                                </th>
+                                <th>
+                                    EC
+                                </th>
+                                <th>
+                                    ED
+                                </th>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Вес
+                                </td>
+                                <td>
+                                    1
+                                </td>
+                                <td>
+                                    2
+                                </td>
+                                <td>
+                                    3
+                                </td>
+                                <td>
+                                    4
+                                </td>
+                                <td>
+                                    5
+                                </td>
+                                <td>
+                                    6
+                                </td>
+                                <td>
+                                    7
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="task-description">
+                        <p>
+                            <span>Step 1:</span> посмотрим в таблицу и увидим, что ребром с минимальным весом является ребро AE.
+                            Выберите его на графе.
+                        </p>
+                        <p>
+                            <span>Step 2:</span> теперь минимальным ребром является ребро CD. Поскольку при добавлении его в наш
+                            каркас не образуется цикла, то оно нам подходит. Выберите его на графе.
+                        </p>
+                        <p>
+                            <span>Step 3:</span> рассмотрим следующее ребро - AB. Так как его концы соединяют вершины из разных
+                            множеств, то оно нам подходит. Выделите его на графе. У нас уже получилось минимальное оставное
+                            дерево, но давайте рассмотрим оставшиеся ребра.
+                        </p>
+                        <p>
+                            <span>Step 4:</span> следующее ребро - BE. Если мы его добавим в наш каркас, то у нас получится цикл
+                            AB-BE-EA (поскольку ребра AE и AB уже в нашем каркасе). Следовательно, это ребро нам не подходит.
+                            Переходим к следующему шагу.
+                        </p>
+                        <p>
+                            <span>Step 5:</span> оставшиеся ребра EC и ED соединяют вершины из одного множества, поэтому если мы
+                            их добавим в наш каркас, то получится цикл.
+                        </p>
+                    </div>
+                </div>
+                <div class='divider'></div>
+                <div class='actions'>
+                    <a id='show-modal' class='action-button button-theory'>
+                        Теория
+                    </a>
+                    <a id='task-check' class='action-button button-task-check'>
+                        Проверить
+                    </a>
+                </div>
+            </div>
+
+            <div class="right">
+                <h3 class='graph-title'>
+                    Граф
+                </h3>
+                <div class="divider"></div>
+                <div id="container"></div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Theory Modal -->
+    <div class="modal hidden">
+        <a id='close-modal'>
+            <i class="material-icons">close</i>
+        </a>
+        <h3 class='modal-title'>
+            Теория
+        </h3>
+        <div class='modal-description'>
+            <p>
+                Алгоритм Краскала — алгоритм поиска минимального остовного дерева во взвешенном неориентированном связном графе.
+            </p>
+            <p>
+                В алгоритме Краскала весь единый список ребер упорядочивается по неубыванию весов ребра. Далее ребра перебираются от ребер
+                с меньшим весом к большему, и очередное ребро добавляется к каркасу, если оно не образовывает цикла с ранее
+                выбранными ребрами. В частности, первым всегда выбирается одно из ребер минимального веса в графе.
+            </p>
+            <p>
+                Алгоритм является иттерационным, где на каждом шаге сначала выбирается ребро минимального веса (из оставшихся). После этого
+                ребра присоединяется к текущему каркасу и смотрится, чтобы это ребро не образовывало цикл в данном каркасе
+                (циклом называется граф, в котором начало и конец совпадают).
+            </p>
+            <p>
+                Минимальное количество ребер для построение минимального оставного дерева равно: [Кол-во узлов] - 1
+            </p>
+        </div>
+    </div>
+
+    <!-- Result Modal -->
+    <div class='result-modal hidden'>
+        <div class='result-modal-wrapper'>
+            <p class='modal-result-message'>
+                Задание выполнено. Теперь вы можете перейти к практическому заданию.
+            </p>
+            <div class='divider'></div>
+            <div class='modal-result-button'>
+                <a href='practice.html' class='result-button'>
+                    Практика
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class='footer-wrapper'>
+            <p>
+                Курсовая работа, 2018
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/sigma.js/1.2.1/sigma.min.js'></script>
+    <script src="js/sigma.renderers.edgeLabels/settings.js"></script>
+    <script src="js/sigma.renderers.edgeLabels/sigma.canvas.edges.labels.def.js"></script>
+    <script src="js/sigma.renderers.edgeLabels/sigma.canvas.edges.labels.curve.js"></script>
+    <script src="js/sigma.renderers.edgeLabels/sigma.canvas.edges.labels.curvedArrow.js"></script>
+    <script src='js/app.js'></script>
+
+</body>
+
+</html>

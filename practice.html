@@ -1,0 +1,117 @@
+<!doctype html>
+
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <link rel='stylesheet' href='css/practice.css'>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel='icon' type='image/png' href='images/icon.ico'>
+    <title>
+        Алгоритм Краскала
+    </title>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class='nav-wrapper'>
+            <ul class='nav-list'>
+                <li class="nav-list-item">
+                    <a href="index.html">
+                        <i class="material-icons">
+                            home
+                        </i>
+                        <span>Главная</span>
+                    </a>
+                </li>
+                <li class='nav-list-item'>
+                    <a href='study.html'>
+                        <i class="material-icons">
+                            school
+                        </i>
+                        <span>
+                            Обучение
+                        </span>
+                    </a>
+                </li>
+                <li class='nav-list-item'>
+                    <a href='#'>
+                        <i class="material-icons">
+                            create
+                        </i>
+                        <span>
+                            Практика
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <section class='container'>
+            <div class='task-header'>
+                <div class='task-title'>
+                    Алгоритм Краскала
+                </div>
+                <div class='task-description'>
+                    <p>
+                        Постановка задачи
+                    </p>
+                    <p>
+                        Необходимо построить минимальное остовное дерево на основе заданного графа при помощи Алгоритма Краскала.
+                    </p>
+                </div>
+            </div>
+            <div class='graph-wrapper' id='container'>
+            </div>
+            <div class='divider'></div>
+            <div class='button-wrapper'>
+                <a class='check-button' id='check-button'>
+                    Проверить
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Result Modal -->
+    <div class='modal hidden' id='result-modal'>
+        <div class='wrapper'>
+            <div class='modal-content'>
+                <p>
+                    Задание выполнено правильно!
+                </p>
+            </div>
+            <div class='divider'></div>
+            <div class='modal-button'>
+                <a id='oneMoreTimeButton'>
+                    Заново
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class='footer-wrapper'>
+            <p>
+                Курсовая работа, 2018
+            </p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/sigma.js/1.2.1/sigma.min.js'></script>
+    <script src="js/sigma.renderers.edgeLabels/settings.js"></script>
+    <script src="js/sigma.renderers.edgeLabels/sigma.canvas.edges.labels.def.js"></script>
+    <script src="js/sigma.renderers.edgeLabels/sigma.canvas.edges.labels.curve.js"></script>
+    <script src="js/sigma.renderers.edgeLabels/sigma.canvas.edges.labels.curvedArrow.js"></script>
+    <script src='js/practice.js'></script>
+
+</body>
+
+</html>
